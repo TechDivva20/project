@@ -7,12 +7,12 @@ import TabButton from './components/TabButton';
 import { useState } from 'react';
 
 function App() {
-const [selectedTopic, setSelectedTopic] = useState ('components')
+const [selectedTopic, setSelectedTopic] = useState ()
 
   function handleSelect (selectedButton) {
     // selectedButton = components, props, Jsx, state
     setSelectedTopic(selectedButton)
-    console.log(selectedTopic)
+    // console.log(selectedTopic)
    }
 
 console.log("STRUCTURAL ARRANGEMENTS")
@@ -42,18 +42,25 @@ console.log("STRUCTURAL ARRANGEMENTS")
           <h2>Examples</h2>
           {/* menu is a default in React used to create list items in JSX */}
           <menu> 
-             <TabButton onSelect={() => handleSelect ('component')}>Components</TabButton>
-             <TabButton onSelect={() => handleSelect ('Jsx')}>Jsx</TabButton>
+             <TabButton onSelect={() => handleSelect ('components')}>Components</TabButton>
+             <TabButton onSelect={() => handleSelect ('jsx')}>Jsx</TabButton>
              <TabButton onSelect={() => handleSelect ('props')}>Props</TabButton>
              <TabButton onSelect={() => handleSelect ('state')}>State</TabButton>
           </menu>
+         
+         {!selectedTopic ? (
+         <p>Please select a Topic</p> )
+          : (
           <div id='tab-content'>
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+          <h3>{EXAMPLES[selectedTopic].title}</h3>
+          <p>{EXAMPLES[selectedTopic].description}</p>
+          <pre>
+            <code>{EXAMPLES[selectedTopic].code}</code>
+          </pre>
+        </div>)}
+
+         {/* if selectedTopic is not true, render the paragraph tag, otherwise render the div tag */}
+
         </section>
        
       </main>
