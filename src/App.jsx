@@ -42,12 +42,17 @@ console.log("STRUCTURAL ARRANGEMENTS")
           <h2>Examples</h2>
           {/* menu is a default in React used to create list items in JSX */}
           <menu> 
-             <TabButton onSelect={() => handleSelect ('components')}>Components</TabButton>
-             <TabButton onSelect={() => handleSelect ('jsx')}>Jsx</TabButton>
-             <TabButton onSelect={() => handleSelect ('props')}>Props</TabButton>
-             <TabButton onSelect={() => handleSelect ('state')}>State</TabButton>
+             <TabButton isSelected={selectedTopic === 'components'}
+              onSelect={() => handleSelect ('components')}>Components</TabButton>
+             <TabButton isSelected={selectedTopic === 'jsx'}
+             onSelect={() => handleSelect ('jsx')}>Jsx</TabButton>
+             <TabButton isSelected={selectedTopic === 'props'} 
+             onSelect={() => handleSelect ('props')}>Props</TabButton>
+             <TabButton isSelected={selectedTopic === 'state'}
+             onSelect={() => handleSelect ('state')}>State</TabButton>
           </menu>
-         
+
+          {/* if selectedTopic is not true, render the paragraph tag, otherwise render the div tag */}
          {!selectedTopic ? (
          <p>Please select a Topic</p> )
           : (
@@ -59,10 +64,21 @@ console.log("STRUCTURAL ARRANGEMENTS")
           </pre>
         </div>)}
 
-         {/* if selectedTopic is not true, render the paragraph tag, otherwise render the div tag */}
+        
+        {/* Alternatively, you can also write the code this way, if the condition is true,
+         just render the one after the ampusant symbol, you can follow th code below or above to achieve same result*/}
 
-        </section>
-       
+          {/* {!selectedTopic && <p>Please select a Topic</p>}
+          {selectedTopic && (
+          <div id='tab-content'>
+          <h3>{EXAMPLES[selectedTopic].title}</h3>
+          <p>{EXAMPLES[selectedTopic].description}</p>
+          <pre>
+            <code>{EXAMPLES[selectedTopic].code}</code>
+          </pre>
+          </div>)} */}
+
+        </section>     
       </main>
     </div>
   );
